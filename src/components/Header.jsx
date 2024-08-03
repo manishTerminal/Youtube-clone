@@ -2,12 +2,16 @@ import logo from "../assets/img/logo.png";
 import ham from "../assets/img/hamburger.png";
 import search from "../assets/img/search.png";
 import user from "../assets/img/user.png";
+import { useDispatch } from "react-redux";
+import { clicked } from "../redux/sliceSidebar";
 
 const Header = () => {
+  const dispatch = useDispatch();
+
   return (
     <div className="flex justify-between my-2 shadow-sm py-1">
       <div className="flex mx-2">
-        <button>
+        <button onClick={(e) => dispatch(clicked())}>
           <img className="h-6" src={ham} />
         </button>
 
