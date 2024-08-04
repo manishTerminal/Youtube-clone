@@ -4,6 +4,7 @@ import search from "../assets/img/search.png";
 import user from "../assets/img/user.png";
 import { useDispatch } from "react-redux";
 import { clicked } from "../redux/sliceSidebar";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -14,8 +15,9 @@ const Header = () => {
         <button onClick={(e) => dispatch(clicked())}>
           <img className="h-6" src={ham} />
         </button>
-
+        <Link to="/">
         <img className="h-10 mx-4" src={logo} />
+        </Link>
       </div>
       <div className="flex">
         <input
@@ -28,9 +30,11 @@ const Header = () => {
         </button>
       </div>
       <div className="flex mx-2">
-        <button>
-          <img className="h-10" src={user} />
-        </button>
+        <Link to="/profile">
+          <button>
+            <img className="h-10" src={user} />
+          </button>
+        </Link>
       </div>
     </div>
   );

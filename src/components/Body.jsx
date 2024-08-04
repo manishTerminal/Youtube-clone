@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import VideoCard from "./VideoCard.jsx";
 import { API } from "../utils/constants.jsx";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [videos, setVideos] = useState([]);
@@ -13,11 +14,14 @@ const Body = () => {
     const res = await data.json();
     setVideos(res.items);
   };
-  console.log(videos);
+
+  // console.log(videos);
   return (
     <div className="flex flex-wrap">
       {videos.map((video) => (
-        <VideoCard info={video} />
+        <Link to={"/watch?v="+video.id}>
+          <VideoCard info={video} />
+        </Link>
       ))}
     </div>
   );

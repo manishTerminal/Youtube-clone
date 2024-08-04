@@ -1,11 +1,11 @@
 import React from "react";
 
 const VideoCard = ({info}) => {
-    console.log(info)
+    // console.log(info)
     const {snippet, statistics} = info
 
   return (
-    <div className="w-64 m-2 shadow-md cursor-pointer">
+    <div className="w-60 m-2 shadow-md cursor-pointer">
       <div>
         <img src={snippet?.thumbnails?.medium?.url} />
       </div>
