@@ -1,8 +1,8 @@
 import React from "react";
 
-const VideoCard = ({info}) => {
-    // console.log(info)
-    const {snippet, statistics} = info
+const VideoCard = ({ info }) => {
+  // console.log(info)
+  const { snippet, statistics } = info;
 
   return (
     <div className="w-60 m-2 shadow-md cursor-pointer">
@@ -14,6 +14,14 @@ const VideoCard = ({info}) => {
         <h3 className="text-gray-500 px-2">{snippet.channelTitle}</h3>
         <h4 className="text-gray-500 px-2">{statistics.viewCount} views</h4>
       </div>
+    </div>
+  );
+};
+
+export const AdCard = ({info}) => {
+  return (
+    <div className="border border-black  m-2 p-4">
+      <VideoCard info={info}/>
     </div>
   );
 };

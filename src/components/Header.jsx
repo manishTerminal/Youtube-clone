@@ -5,10 +5,33 @@ import user from "../assets/img/user.png";
 import { useDispatch } from "react-redux";
 import { clicked } from "../redux/sliceSidebar";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { YOUTUBE_SERCH_API } from "../utils/constants";
+import axios from "axios";
 
 const Header = () => {
+  const [focus, setFocus] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [suggestion, setSuggestion] = useState([]);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    getSuggestions();
+  }, [searchQuery]);
+
+  const getSuggestions = async () => {
+    const response = await axios.get(YOUTUBE_SERCH_API + searchQuery);
+    // const res = data.json();
+    // console.log(response.data[1])
+    setSuggestion(response.data[1]);
+    // console.log(suggestion[1]);
+  };
+
+  const clickHandler = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  console.log(searchQuery);
   return (
     <div className="flex justify-between my-2 shadow-sm py-1">
       <div className="flex mx-2">
@@ -16,19 +39,39 @@ const Header = () => {
           <img className="h-6" src={ham} />
         </button>
         <Link to="/">
-        <img className="h-10 mx-4" src={logo} />
+          <img className="h-10 mx-4" src={logo} />
         </Link>
       </div>
-      <div className="flex">
-        <input
-          className="border rounded-l-full w-96 border-gray-500 px-4"
-          type="text"
-          placeholder="search"
-        ></input>
-        <button className="border rounded-r-full border-gray-500 px-2 bg-slate-100">
-          <img className="h-8" src={search} />
-        </button>
+
+      {/* search bar */}
+      <div>
+        <div className="flex">
+          <input
+            className="border rounded-l-full w-96 border-gray-500 px-4"
+            type="text"
+            placeholder="search"
+            value={searchQuery}
+            onChange={clickHandler}
+            onFocus={() => setFocus(true)}
+            onBlur={() => setFocus(false)}
+          ></input>
+          <button className="border rounded-r-full border-gray-500 px-2 bg-slate-100">
+            <img className="h-8" src={search} />
+          </button>
+        </div>
+        {focus && (
+          <ul className="fixed bg-white shadow-md w-[24rem] p-2 border rounded-md m-1">
+            {suggestion.map((s) => (
+              <li className="flex border my-2">
+                {" "}
+                <img className="w-4 m-1" src={search} />
+                {s}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
+
       <div className="flex mx-2">
         <Link to="/profile">
           <button>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import VideoCard from "./VideoCard.jsx";
+import VideoCard, { AdCard } from "./VideoCard.jsx";
 import { API } from "../utils/constants.jsx";
 import { Link } from "react-router-dom";
 
@@ -18,8 +18,9 @@ const Body = () => {
   // console.log(videos);
   return (
     <div className="flex flex-wrap">
+      {videos[0] && <AdCard info={videos[0]} />}
       {videos.map((video) => (
-        <Link to={"/watch?v="+video.id}>
+        <Link key={video.id} to={"/watch?v=" + video.id}>
           <VideoCard info={video} />
         </Link>
       ))}
