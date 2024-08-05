@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 
 const Home = () => {
   const toggle = useSelector((state) => state.hamburger.toggle);
-  console.log(toggle)
   return (
     <div className="flex">
       {toggle === true ? <Sidebar /> : null}

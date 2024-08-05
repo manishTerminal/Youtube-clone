@@ -38,7 +38,6 @@ const Header = () => {
     setSearchQuery(e.target.value);
   };
 
-  console.log(searchQuery);
   return (
     <div className="bg-white flex justify-between shadow-md py-1 fixed w-full top-0 left-0 z-0">
       <div className="flex mx-2">

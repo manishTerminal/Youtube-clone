@@ -1,7 +1,6 @@
 import React from "react";
 
 function WatchVideoComponent({ vid }) {
-    console.log(vid)
   return (
     <iframe
       width="560"

@@ -8,13 +8,12 @@ import CommentContainer from "./CommentContainer";
 const WatchPage = () => {
   const toggle = useSelector((state) => state.hamburger.toggle);
   let [searchParam] = useSearchParams();
-   const id =  searchParam.get("v")
-  console.log(id);
+  const id = searchParam.get("v");
   return (
     <div className="flex ml-64 mt-16 flex-col">
       {toggle === true ? <Sidebar /> : null}
       <WatchVideoComponent vid={id} />
-      <CommentContainer/>
+      <CommentContainer />
     </div>
   );
 };

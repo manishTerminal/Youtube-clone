@@ -99,9 +99,9 @@ const Comments = ({ data }) => {
 const CommentList = ({ comments }) => {
   return (
     <>
-      {comments.map((comment) => (
-        <div>
-          <Comments data={comment} />
+      {comments.map((comment, index) => (
+        <div key={index}>
+          <Comments  data={comment} />
           <div className="border border-l-black ml-6 mb-2">
             <CommentList comments={comment.reply} />
           </div>
