@@ -40,7 +40,7 @@ const Header = () => {
 
   console.log(searchQuery);
   return (
-    <div className="flex justify-between my-2 shadow-sm py-1">
+    <div className="bg-white flex justify-between shadow-md py-1 fixed w-full top-0 left-0 z-0">
       <div className="flex mx-2">
         <button onClick={(e) => dispatch(clicked())}>
           <img className="h-6" src={ham} />

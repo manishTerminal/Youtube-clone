@@ -6,10 +6,10 @@ import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
-    <div className=" w-60">
+    <div className=" bg-white w-60 fixed  h-full top-[3.4rem] left-0">
       <div>
         <Link to="/">
-        <button className="flex mx-4 py-2 px-3 w-52 mb-2 rounded-lg bg-slate-100 font-medium">
+        <button className="flex mt-3 mx-4 py-2 px-3 w-52 mb-2 rounded-lg bg-slate-100 font-medium">
           <img className="h-6 pr-10" src={home} />
           Home
         </button>
@@ -53,6 +53,11 @@ const Sidebar = () => {
           <img className="h-6 pr-10" src={subs} />
           Liked videos
         </button>
+        <button className="flex mx-4 py-2 px-3 w-52 mb-2 rounded-lg font-medium hover:bg-slate-100">
+          <img className="h-6 pr-10" src={subs} />
+          Your videos
+        </button>
+        
       </div>
     </div>
   );

@@ -17,8 +17,8 @@ const Body = () => {
 
   // console.log(videos);
   return (
-    <div className="flex flex-wrap">
-      {videos[0] && <AdCard info={videos[0]} />}
+    <div className="flex flex-wrap ml-64 mt-14">
+      {/* {videos[0] && <AdCard info={videos[0]} />} */}
       {videos.map((video) => (
         <Link key={video.id} to={"/watch?v=" + video.id}>
           <VideoCard info={video} />
