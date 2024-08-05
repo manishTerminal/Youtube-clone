@@ -16,7 +16,13 @@ const Header = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    getSuggestions();
+    const timer = setTimeout(() => {
+      getSuggestions();
+    }, 200);
+
+    return () => {
+      clearTimeout(timer);
+    };
   }, [searchQuery]);
 
   const getSuggestions = async () => {
