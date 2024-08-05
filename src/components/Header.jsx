@@ -20,11 +20,12 @@ const Header = () => {
   }, [searchQuery]);
 
   const getSuggestions = async () => {
-    const response = await axios.get(YOUTUBE_SERCH_API + searchQuery);
-    // const res = data.json();
-    // console.log(response.data[1])
-    setSuggestion(response.data[1]);
-    // console.log(suggestion[1]);
+    try {
+      const response = await axios.get(YOUTUBE_SERCH_API + searchQuery);
+      setSuggestion(response.data[1]);
+    } catch (error) {
+      console.log("fetch api failed");
+    }
   };
 
   const clickHandler = (e) => {
@@ -62,7 +63,7 @@ const Header = () => {
         {focus && (
           <ul className="fixed bg-white shadow-md w-[24rem] p-2 border rounded-md m-1">
             {suggestion.map((s) => (
-              <li className="flex border my-2">
+              <li key={s} className="flex border my-2">
                 {" "}
                 <img className="w-4 m-1" src={search} />
                 {s}
