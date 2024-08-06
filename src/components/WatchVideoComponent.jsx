@@ -3,7 +3,7 @@ import React from "react";
 function WatchVideoComponent({ vid }) {
   return (
     <iframe
-      width="650"
+      width="700"
       height="400"
       src={"https://www.youtube.com/embed/"+vid}
       title="YouTube video player"
