@@ -25,6 +25,12 @@ const Header = () => {
     };
   }, [searchQuery]);
 
+  const showSearchResponse = () => {
+    let a = 2;
+    let b = 4;
+    console.log("search list is clicked", a + b);
+  };
+
   const getSuggestions = async () => {
     try {
       const response = await axios.get(YOUTUBE_SERCH_API + searchQuery);
@@ -61,14 +67,20 @@ const Header = () => {
             onFocus={() => setFocus(true)}
             onBlur={() => setFocus(false)}
           ></input>
-          <button className="border rounded-r-full border-gray-500 px-2 bg-slate-100">
+          <button
+            className="border rounded-r-full border-gray-500 px-2 bg-slate-100"
+            onClick={() => showSearchResponse()}
+          >
             <img className="h-8" src={search} />
           </button>
         </div>
         {focus && (
           <ul className="fixed bg-white shadow-md w-[24rem] p-2 border rounded-md m-1">
             {suggestion.map((s) => (
-              <li key={s} className="flex border my-2">
+              <li
+                key={s}
+                className="flex border my-2 hover:cursor-pointer hover:bg-green-300"
+              >
                 {" "}
                 <img className="w-4 m-1" src={search} />
                 {s}
